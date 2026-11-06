@@ -5,8 +5,8 @@ re-running anything. A fresh local run writes to `audit_outputs/` instead, which
 
 ## `2026-11-04-kaggle-run/`
 
-The run the README quotes. Produced by [`../notebooks/fraud-model.ipynb`](../notebooks/fraud-model.ipynb)
-on Kaggle, on `creditcard.csv` with SHA-256 `76274b69…`, `cmvt` 0.1.0, seed 42.
+The run the README quotes. Produced on Kaggle, on `creditcard.csv` with SHA-256 `76274b69…`,
+`cmvt` 0.1.0, seed 42.
 
 | File | Contents |
 |---|---|

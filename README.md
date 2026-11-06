@@ -192,7 +192,6 @@ src/fraud_audit/
 
 configs/            the full parameter set, in YAML
 tests/              134 tests, all on synthetic data with known answers
-notebooks/          the original exploratory notebook this repo was built from
 reports/            a committed reference run: report, tables, figures
 docs/               what the upstream toolkit was missing and why
 ```
