@@ -1,0 +1,42 @@
+{
+  "CFG": {
+    "seed": 42,
+    "data_candidates": [
+      "/kaggle/input/datasets/mlg-ulb/creditcardfraud/creditcard.csv",
+      "creditcard.csv",
+      "data/creditcard.csv"
+    ],
+    "dedupe_exact_rows": true,
+    "train_frac": 0.55,
+    "recal_frac": 0.15,
+    "intime_val_frac": 0.2,
+    "subject": "Gradient boosting",
+    "review_cost": 5.0,
+    "n_boot": 500,
+    "tol_auc_drop": 0.02,
+    "tol_oe": [
+      0.8,
+      1.25
+    ],
+    "tol_slope": [
+      0.8,
+      1.2
+    ],
+    "min_events_recal": 100
+  },
+  "cmvt": "0.1.0",
+  "data_sha256": "76274b691b16a6c49d3f159c883398e03ccd6d1ee12d9d8ee38f4b4b98551a89",
+  "drift": {
+    "prior": {
+      "rate_dev": "0.0021275368634211048",
+      "rate_oot": "0.001257093177626091",
+      "ci_dev": "(np.float64(0.0019108542693554013), np.float64(0.0023687320115008898))",
+      "ci_oot": "(np.float64(0.001040500845988902), np.float64(0.0015187031739112018))",
+      "p": "1.6489181496158744e-06"
+    },
+    "max_psi": 1.5242419167944594,
+    "max_psi_feature": "V1",
+    "score_psi": 0.01431999173511539,
+    "domain_auc": 0.986659364197531
+  }
+}

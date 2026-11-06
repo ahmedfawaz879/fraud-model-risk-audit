@@ -1,0 +1,5 @@
+check,severity,n,passed,detail,note
+patient_overlap_train_test,critical,0,True,0 patients in BOTH splits,"no entity id exists, so patient/card overlap is trivially 0 and NOT informative"
+duplicate_ids_in_train,warning,0,True,0 duplicate ids in train,row ids are unique by construction
+train_rows_after_split_time,critical,0,True,0 train rows after cutoff,
+feature_identical_to_label,critical,0,True,label-identical columns: [],

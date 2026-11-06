@@ -1,0 +1,19 @@
+# Normalise line endings in the repository; check out native.
+* text=auto
+
+*.py      text diff=python
+*.md      text
+*.yaml    text
+*.yml     text
+*.toml    text
+*.cff     text
+*.csv     text
+*.json    text
+*.ipynb   text eol=lf
+Makefile  text eol=lf
+
+*.png     binary
+
+# Generated artefacts: keep them out of diffs and language statistics.
+reports/**  linguist-generated=true
+notebooks/*.ipynb linguist-documentation=true

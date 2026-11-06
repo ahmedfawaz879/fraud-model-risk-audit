@@ -1,0 +1,78 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "fraud-model-risk-audit"
+version = "0.1.0"
+description = "Model risk audit of a credit-card fraud model under a strict temporal split: discrimination and calibration reported separately with uncertainty, drift attributed to a cause, the calibration gap priced in currency, and recalibration tested on data it never saw."
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [{ name = "Ahmed Fawaz" }]
+requires-python = ">=3.10"
+keywords = [
+    "fraud-detection",
+    "model-risk",
+    "calibration",
+    "temporal-validation",
+    "distribution-shift",
+    "reproducibility",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Financial and Insurance Industry",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "scipy>=1.10",
+    "scikit-learn>=1.3",
+    "statsmodels>=0.14",
+    "matplotlib>=3.7",
+    "pyyaml>=6.0",
+    "cmvt @ git+https://github.com/ahmedfawaz879/clinical-model-validation-toolkit.git",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "ruff>=0.5",
+    "nbclient>=0.10",
+    "nbconvert>=7.16",
+    "ipykernel>=6.29",
+]
+
+[project.urls]
+Homepage = "https://github.com/ahmedfawaz879/fraud-model-risk-audit"
+Repository = "https://github.com/ahmedfawaz879/fraud-model-risk-audit"
+Issues = "https://github.com/ahmedfawaz879/fraud-model-risk-audit/issues"
+
+[project.scripts]
+fraud-audit = "fraud_audit.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/fraud_audit"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = [
+    "ignore::FutureWarning",
+    "ignore::DeprecationWarning",
+]
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = ["E501"]

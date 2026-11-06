@@ -1,0 +1,54 @@
+# Audit configuration for the Kaggle Credit Card Fraud Detection dataset
+# (mlg-ulb/creditcardfraud). Everything a reviewer may want to challenge lives here.
+#
+# Run:  fraud-audit --config configs/credit_fraud.yaml --data data/creditcard.csv
+
+seed: 42
+
+# ── Data ──────────────────────────────────────────────────────────────────────────
+# data_path, when set, wins over the candidate list. Otherwise the candidates are tried
+# in order, then /kaggle/input is searched recursively for creditcard*.csv.
+data_path: null
+data_candidates:
+  - data/creditcard.csv
+  - creditcard.csv
+  - /kaggle/input/creditcardfraud/creditcard.csv
+kaggle_input_root: /kaggle/input
+
+# Exact duplicate rows are dropped before splitting, because identical rows straddling a
+# boundary are leakage no time split can prevent. The count removed is reported.
+dedupe_exact_rows: true
+
+# ── Strict temporal split ─────────────────────────────────────────────────────────
+# Earliest 55% develops the model; the next 15% is the only place a recalibration may be
+# fitted; the last 30% is touched once, at the end. Boundaries never cut inside a block of
+# identical timestamps.
+train_frac: 0.55
+recal_frac: 0.15
+intime_val_frac: 0.20   # random hold-out INSIDE development: the "headline" number
+
+# ── Model under audit ─────────────────────────────────────────────────────────────
+# Declared before any out-of-time result is seen. The other three models are comparators;
+# the class-weighted pair is included to show what this audit catches, by construction.
+subject: Gradient boosting
+primary_recalibrator: Logistic (slope + intercept)
+
+# ── Economics: assumptions, not measurements ──────────────────────────────────────
+# A review costs this many currency units; a reviewed fraud is always stopped; an
+# unreviewed fraud costs its full Amount; customer friction and chargeback fees are ignored.
+review_cost: 5.0
+review_cost_grid: [1.0, 2.0, 5.0, 10.0, 25.0]
+
+# ── Uncertainty ───────────────────────────────────────────────────────────────────
+n_boot: 500
+
+# ── Pre-declared tolerances (illustrative; a real model-risk owner sets these) ────
+tolerances:
+  auc_drop: 0.02          # largest AUROC fall that still counts as HELD
+  oe: [0.80, 1.25]        # acceptable band for observed/expected events
+  slope: [0.80, 1.20]     # acceptable band for the calibration slope
+  min_events_recal: 100   # rule-of-thumb event floor for a recalibration sample
+
+# ── Output ────────────────────────────────────────────────────────────────────────
+output_dir: audit_outputs
+make_figures: true

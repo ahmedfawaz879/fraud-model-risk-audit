@@ -1,0 +1,52 @@
+cff-version: 1.2.0
+message: "If you use this audit or its method, please cite it as below."
+title: "Fraud model risk audit: discrimination, calibration and cost under a strict temporal split"
+abstract: >-
+  A reproducible model-risk audit of a credit-card fraud model. Discrimination and calibration are
+  reported separately with uncertainty, before and after a strict temporal split; the drift is
+  attributed to prior, covariate or concept shift; the calibration gap is priced in currency; and
+  a recalibration is fitted on a held-out window and tested on data it never saw. Verdicts compare
+  confidence intervals against tolerances declared before the out-of-time data is scored.
+type: software
+authors:
+  - family-names: Fawaz
+    given-names: Ahmed
+version: 0.1.0
+license: MIT
+repository-code: "https://github.com/ahmedfawaz879/fraud-model-risk-audit"
+keywords:
+  - fraud detection
+  - model risk
+  - calibration
+  - temporal validation
+  - distribution shift
+  - reproducibility
+references:
+  - type: software
+    title: "cmvt: clinical model validation toolkit"
+    authors:
+      - family-names: Fawaz
+        given-names: Ahmed
+    repository-code: "https://github.com/ahmedfawaz879/clinical-model-validation-toolkit"
+  - type: article
+    title: "Calibration: the Achilles heel of predictive analytics"
+    authors:
+      - family-names: Van Calster
+        given-names: Ben
+      - family-names: McLernon
+        given-names: David J.
+      - family-names: van Smeden
+        given-names: Maarten
+      - family-names: Wynants
+        given-names: Laure
+      - family-names: Steyerberg
+        given-names: Ewout W.
+    journal: "BMC Medicine"
+    year: 2019
+    volume: 17
+    doi: "10.1186/s12916-019-1466-7"
+  - type: generic
+    title: "Credit Card Fraud Detection"
+    authors:
+      - name: "Machine Learning Group, Université Libre de Bruxelles"
+    url: "https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud"

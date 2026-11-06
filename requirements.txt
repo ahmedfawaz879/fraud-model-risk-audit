@@ -1,0 +1,14 @@
+# Runtime dependencies. For development use `pip install -e ".[dev]"` instead,
+# which installs these plus pytest and ruff from pyproject.toml.
+numpy>=1.24
+pandas>=2.0
+scipy>=1.10
+scikit-learn>=1.3
+statsmodels>=0.14
+matplotlib>=3.7
+pyyaml>=6.0
+
+# The validation toolkit this audit is built on: DeLong AUROC variance and the
+# unpaired DeLong test, equal-width ECE, the decidable leakage checks, and PSI.
+# Installed from source because it is not published to PyPI.
+cmvt @ git+https://github.com/ahmedfawaz879/clinical-model-validation-toolkit.git
