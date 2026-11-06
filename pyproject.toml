@@ -60,6 +60,12 @@ fraud-audit = "fraud_audit.cli:main"
 [tool.hatch.build.targets.wheel]
 packages = ["src/fraud_audit"]
 
+# `cmvt` is installed straight from GitHub because it is not published to PyPI.
+# Hatchling refuses direct references unless this is set, which also means this
+# package cannot itself be uploaded to PyPI - acceptable, it is not meant to be.
+[tool.hatch.metadata]
+allow-direct-references = true
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
